@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShiftSignal</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="App navigation">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">S</div>
+          <div>
+            <strong>ShiftSignal</strong>
+            <span>AI labor updates</span>
+          </div>
+        </div>
+
+        <nav class="nav-list" aria-label="Sections">
+          <a class="active" href="#brief">Brief</a>
+          <a href="#sectors">Sectors</a>
+          <a href="#watchlist">Watchlist</a>
+          <a href="#signals">Signals</a>
+        </nav>
+
+        <div class="sidebar-note">
+          <span class="pulse"></span>
+          <p>Demo feed refreshed for product exploration. Connect a news or labor-data API to go live.</p>
+        </div>
+      </aside>
+
+      <main>
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Workforce intelligence</p>
+            <h1>Track how AI is changing jobs, skills, and hiring demand.</h1>
+          </div>
+          <div class="search-wrap">
+            <label for="search">Search roles, sectors, or signals</label>
+            <input id="search" type="search" placeholder="Try customer support or healthcare" />
+          </div>
+        </header>
+
+        <section id="brief" class="brief-grid" aria-label="Current AI job impact summary">
+          <article class="metric impact-high">
+            <span>High exposure roles</span>
+            <strong id="highCount">0</strong>
+            <small>tracked this week</small>
+          </article>
+          <article class="metric impact-mid">
+            <span>Skill shifts</span>
+            <strong id="skillCount">0</strong>
+            <small>new requirements detected</small>
+          </article>
+          <article class="metric impact-low">
+            <span>Hiring signals</span>
+            <strong id="hiringCount">0</strong>
+            <small>positive or expanding demand</small>
+          </article>
+          <article class="metric">
+            <span>Watchlist alerts</span>
+            <strong id="watchCount">0</strong>
+            <small>matching saved roles</small>
+          </article>
+        </section>
+
+        <section class="control-band" aria-label="Feed controls">
+          <div class="segmented" role="tablist" aria-label="Risk level">
+            <button class="active" data-risk="all" type="button">All</button>
+            <button data-risk="high" type="button">High</button>
+            <button data-risk="medium" type="button">Medium</button>
+            <button data-risk="low" type="button">Low</button>
+          </div>
+
+          <label class="select-label" for="sectorFilter">
+            Sector
+            <select id="sectorFilter">
+              <option value="all">All sectors</option>
+            </select>
+          </label>
+        </section>
+
+        <div class="content-grid">
+          <section id="sectors" class="panel feed-panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Impact feed</p>
+                <h2>Latest tracked changes</h2>
+              </div>
+              <span id="resultCount" class="count-pill">0 updates</span>
+            </div>
+            <div id="feed" class="feed" aria-live="polite"></div>
+          </section>
+
+          <aside class="right-rail">
+            <section id="watchlist" class="panel">
+              <div class="panel-header compact">
+                <div>
+                  <p class="eyebrow">Saved roles</p>
+                  <h2>Watchlist</h2>
+                </div>
+              </div>
+              <form id="watchForm" class="watch-form">
+                <input id="watchInput" type="text" placeholder="Add a role" autocomplete="off" />
+                <button type="submit">Add</button>
+              </form>
+              <div id="watchlistItems" class="watch-items"></div>
+            </section>
+
+            <section id="signals" class="panel">
+              <div class="panel-header compact">
+                <div>
+                  <p class="eyebrow">Signal mix</p>
+                  <h2>What changed</h2>
+                </div>
+              </div>
+              <div id="signalBars" class="signal-bars"></div>
+            </section>
+          </aside>
+        </div>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
